@@ -1,15 +1,28 @@
 <?php
-// Read the file
-$file = fopen("input.txt","r");
+// Algorithm for fuel calculation when given the mass
+// $mass = 100756;
+// $first = $mass / 3;
+// echo floor($first) -2;
 
-// Assign each value from file a variable
+// Now that we have an algorithm we need to figure out how to get the amount of fuel for each input then add all the total fuel to get the final answer
+$ans;
+$finalAns = 0;
+// Setup the input file to be accessed
+$file = "input.txt";
+$lines = file($file);
+// echo $lines[0];
 
-// For example:
+// Count the number of inputs in the file
+$num = count($lines);
 
-//     For a mass of 12, divide by 3 and round down to get 4, then subtract 2 to get 2.
-//     For a mass of 14, dividing by 3 and rounding down still yields 4, so the fuel required is also 2.
-//     For a mass of 1969, the fuel required is 654.
-//     For a mass of 100756, the fuel required is 33583.
+// Loop through the inputs array indexes
+for ($i = 0; $i < $num; $i++) {
+    // echo $lines[$i];
+    $count = ($lines[$i] / 3) - 2;
+    $ans = floor($count);
+    $finalAns = $finalAns + $ans;
+}
 
-// The Fuel Counter-Upper needs to know the total fuel requirement. To find it, 
-//individually calculate the fuel needed for the mass of each module (your puzzle input), then add together all the fuel values.
+echo $finalAns;
+
+// The sum of all fuels comes to 3420719
